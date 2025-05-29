@@ -58,6 +58,84 @@ Se incluyen pruebas que abarcan:
 - Condiciones de carrera y concurrencia con múltiples PS
 - Finalización ordenada de procesos
 
+## 📦 Ejecución del Programa
+
+### 1️⃣ Compilación
+
+Asegúrate de tener un compilador de C instalado (como `gcc`) y luego ejecuta:
+
+```bash
+make
+
+Esto generará los ejecutables necesarios para cada versión del receptor.
+
+
+---
+
+2️⃣ Ejecutar el Receptor de Peticiones (RP)
+
+Con hilos POSIX (pthreads)
+
+./receptorPOSIX -p pipeReceptor -f archivoDatos.txt [-v] [-s archivoSalida.txt]
+
+Con OpenMP
+
+./receptorOpenMP -p pipeReceptor -f archivoDatos.txt [-v] [-s archivoSalida.txt]
+
+Con fork
+
+./receptorFork -p pipeReceptor -f archivoDatos.txt [-v] [-s archivoSalida.txt]
+
+📌 Opciones:
+
+-p: Nombre de la tubería nombrada para recibir solicitudes.
+
+-f: Archivo de base de datos de libros.
+
+-v: (Opcional) Modo verbose (detallado).
+
+-s: (Opcional) Archivo de salida final.
+
+
+
+---
+
+3️⃣ Ejecutar un Proceso Solicitante (PS)
+
+./solicitante [-i archivoSolicitudes.txt] -p pipeReceptor
+
+📌 Opciones:
+
+-i: (Opcional) Archivo con solicitudes en el formato Operación,Libro,ISBN.
+
+-p: Nombre de la tubería nombrada del RP.
+
+
+📎 Ejemplo de contenido para archivoSolicitudes.txt:
+
+P,Cálculo Diferencial,1200
+R,Cálculo Diferencial,1200
+D,Cálculo Diferencial,1200
+Q,Finalizar,0
+
+
+---
+
+4️⃣ Comandos desde consola para el Receptor (RP)
+
+Cuando el RP esté en ejecución, puedes introducir los siguientes comandos por consola:
+
+x: Genera un reporte del estado actual de la base de datos.
+
+s: Finaliza el sistema de forma ordenada (cierra tuberías y escribe archivo de salida si se especificó).
+
+
+
+---
+
+💡 Asegúrate de crear previamente la tubería nombrada (pipeReceptor) antes de ejecutar los procesos, o deja que el RP la cree al inicio si así está programado.
+
+---
 ## 🧠 Lecciones Aprendidas
 
 - OpenMP simplifica pero es menos flexible que pthreads.
