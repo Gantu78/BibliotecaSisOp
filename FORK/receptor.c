@@ -1,6 +1,6 @@
 /**************************************************************
 #         		Pontificia Universidad Javeriana
-#     Autor: Carlos Pinzon
+#     Autor: Grupo Delta (SAMUEL GANTIVA, CARLOS PINZON, SEBASTIAN ALVAREZ, JORGE OLAYA, DANIEL HOYOS)
 #     Fecha: 15 de Mayo de 2025
 #     Materia: Sistemas Operativos
 #     Tema: Proyecto - Sistema para el prestamo de libros
